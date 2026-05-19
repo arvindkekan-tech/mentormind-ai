@@ -1,9 +1,10 @@
 import Navbar from "../components/layout/navbar";
-
+import Container from "../components/shared/container";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
+      <Container>
 
       <section className="flex flex-col items-center justify-center px-6 py-32 text-center">
         <h1 className="max-w-4xl text-5xl font-bold leading-tight text-gray-900">
@@ -26,6 +27,7 @@ export default function Home() {
           </button>
         </div>
       </section>
+      </Container>
     </main>
   );
 }
