@@ -74,6 +74,23 @@ export default function UploadDropzone() {
           );
           continue;
         }
+        const { error: dbError } =
+  await supabase.from("uploads").insert([
+    {
+      file_name: file.name,
+      file_size: fileData.size,
+      file_type: file.type,
+      storage_path: filePath,
+      ai_processed: false,
+    },
+  ]);
+
+if (dbError) {
+  console.error(
+    "Database Error:",
+    dbError.message
+  );
+}
 
         console.log(
           "Uploaded Successfully:",
