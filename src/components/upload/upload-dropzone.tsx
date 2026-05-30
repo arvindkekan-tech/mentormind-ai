@@ -74,6 +74,26 @@ export default function UploadDropzone() {
           );
           continue;
         }
+        if (file.type === "application/pdf") {
+  const formData = new FormData();
+
+  formData.append("file", file);
+
+  const response = await fetch(
+    "/api/extract-pdf",
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+
+  const data = await response.json();
+
+  console.log(
+    "Extracted PDF Text:",
+    data.text
+  );
+}
         const { error: dbError } =
   await supabase.from("uploads").insert([
     {
